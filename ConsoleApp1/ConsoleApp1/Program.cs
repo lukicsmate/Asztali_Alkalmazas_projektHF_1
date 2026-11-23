@@ -10,6 +10,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            var economicsList = csvBeolvasas.economicsCSV();
+            var demographicsList = csvBeolvasas.demographicsCSV();
 
         }
     }

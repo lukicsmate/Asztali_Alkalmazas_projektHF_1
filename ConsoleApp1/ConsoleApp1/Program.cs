@@ -12,6 +12,7 @@ namespace ConsoleApp1
         {
             var economicsList = csvBeolvasas.economicsCSV();
             var demographicsList = csvBeolvasas.demographicsCSV();
+            feltöltés.mysqlFeltöltés(demographicsList, economicsList);
 
         }
     }

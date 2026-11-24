@@ -10,9 +10,9 @@ namespace ConsoleApp1
     {
         public int Year { get; set; }
         public string Country { get; set; }
-        public float Gdp_growth {  get; set; }
-        public float Inflation { get; set; }
-        public economics(int year,string country, float gdp_growth,float inflation) 
+        public double Gdp_growth {  get; set; }
+        public double Inflation { get; set; }
+        public economics(int year,string country, double gdp_growth, double inflation) 
         {
             this.Year = year;
             this.Country = country;

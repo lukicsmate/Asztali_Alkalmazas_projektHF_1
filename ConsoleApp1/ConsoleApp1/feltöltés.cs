@@ -51,7 +51,20 @@ namespace ConsoleApp1
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                     }
-
+                    foreach (var item in economicsList)
+                    {
+                        int year = item.Year;
+                        int countryId = countrySelect(item.Country,conn);
+                        double gdp = item.Gdp_growth;
+                        double inflation = item.Inflation;
+                        cmd.Parameters.AddWithValue("countryId", countryId);
+                        cmd.Parameters.AddWithValue("year", year);
+                        cmd.Parameters.AddWithValue("gdp", gdp);
+                        cmd.Parameters.AddWithValue("inflation",inflation);
+                        cmd.CommandText = "INSERT IGNORE INTO economic_data(country_id,year,gdp_growth,inflation) VALUES(@countryId,@year,@gdp,@inflation)";
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+                    }
 
 
 
@@ -64,7 +77,7 @@ namespace ConsoleApp1
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 cmd.Connection= conn;
-                cmd.CommandText = "SELECT id FROM countries WHERE country_name = @country";
+                cmd.CommandText = "SELECT country_id FROM countries WHERE country_name = @country";
                 cmd.Parameters.AddWithValue("country",countryName);
                 var select = cmd.ExecuteScalar();
                 id = int.Parse(select.ToString());

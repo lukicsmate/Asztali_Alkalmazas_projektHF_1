@@ -103,7 +103,9 @@
     <None Include="eu_demographics_data.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="eu_economics_data.csv" />
+    <None Include="eu_economics_data.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace ConsoleApp1
         public static List<economics> economicsCSV()
         {
             var economicsList = new List<economics>();
-            using (StreamReader sr = new StreamReader("economics.cs"))
+            using (StreamReader sr = new StreamReader("eu_economics_data.csv"))
             {
                 sr.ReadLine();
                 while (!sr.EndOfStream)
@@ -41,8 +42,8 @@ namespace ConsoleApp1
                     var split = sor.Split(',');
                     int year = int.Parse(split[0].ToString());
                     string country = split[1].ToString();
-                    float GDP = float.Parse(split[2].ToString());
-                    float inflation = float.Parse(split[3].ToString());
+                    double GDP = double.Parse(split[2].ToString(),CultureInfo.InvariantCulture);
+                    double inflation = double.Parse(split[3].ToString(),CultureInfo.InvariantCulture);
                     economics economics= new economics(year, country, GDP,inflation);
                     economicsList.Add(economics);
                 }
